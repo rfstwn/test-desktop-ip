@@ -1,0 +1,30 @@
+nav.main-navbar {
+    @include widthCustomContainer();
+    background-color: $primary_color;
+    color: $secondary_color;
+    z-index: 999;
+    position: absolute;
+    top: 1rem;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    a {
+        color: $secondary_color;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    @include onMobileDisplay() {
+        top: 0;
+        position: relative;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+}

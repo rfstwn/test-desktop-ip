@@ -1,0 +1,30 @@
+.login-wrapper {
+    width: 100vw;
+    height: 100vh;
+    @apply flex justify-center items-center;
+
+    form {
+        max-width: 500px;
+        width: 100%;
+        height: calc(100% - 150px);
+        max-height: 550px;
+        margin-top: 75px;
+        padding: 20px;
+        @apply bg-white rounded-2xl;
+        @apply flex justify-center items-center;
+
+        .form-content {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        @include onMobileDisplay() {
+            max-width: 400px;
+            margin-top: 50px;
+            .form-content {
+                max-width: 300px;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@mixin resetText() {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+@mixin onMobileDisplay() {
+    @media screen and (max-width: 639px) {
+        @content;
+    }
+}
+
+@mixin widthCustomContainer() {
+    width: calc(100% - 5rem);
+    margin-inline: 2.5rem;
+
+    @include onMobileDisplay() {
+        width: 100%;
+        margin-inline: 0;
+    }
+}

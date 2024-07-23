@@ -1,0 +1,80 @@
+.hero-banner {
+    width: 100%;
+    height: 600px;
+    background-color: $primary_color;
+
+    @include onMobileDisplay() {
+        height: 450px;
+    }
+
+    &--item {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &--content {
+            z-index: 10;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @apply bg-gradient-to-r from-third from-40% to-transparent;
+
+            //for content
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            &--info {
+                width: 35%;
+                @apply ml-10 flex flex-col gap-3 text-white font-light;
+                font-size: 16px;
+
+                h1 {
+                    font-size: 42px;
+                }
+
+                &--timing {
+                    @apply flex mr-1;
+                    span {
+                        &::after {
+                            content: "";
+                            width: 1px;
+                            @apply bg-white mr-2 ml-2 border-l border-white;
+                        }
+
+                        &:last-child::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            @include onMobileDisplay() {
+                @apply bg-gradient-to-t from-third from-30% to-transparent pb-12;
+                justify-content: flex-end;
+                &--info {
+                    font-size: 12px;
+                    width: calc(100% - 5rem);
+
+                    h1 {
+                        font-size: 25px;
+                    }
+
+                    &--timing {
+                        @apply gap-3;
+                        span {
+                            background: lighten($primary_color, 40%);
+                            @apply p-1;
+                            &::after {
+                                @apply hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

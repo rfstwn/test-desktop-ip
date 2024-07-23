@@ -1,0 +1,28 @@
+footer {
+    @include widthCustomContainer();
+    @apply mt-5;
+
+    .footer-bottom {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .footer-top {
+        h3 {
+            font-size: 23px;
+        }
+        section {
+            font-size: 14px;
+            @apply text-invert_third font-light mb-6;
+
+            svg {
+                @apply text-xl;
+            }
+
+            h4 {
+                font-size: 18px;
+                @apply text-black font-bold mb-4;
+            }
+        }
+    }
+}
