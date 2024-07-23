@@ -20,4 +20,6 @@ const InputForm = forwardRef<HTMLInputElement, iInputForm>((props: iInputForm, r
         </div>
     );
 });
+
+InputForm.displayName = "InputForm";
 export default InputForm;

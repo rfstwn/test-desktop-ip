@@ -2,6 +2,7 @@ import "react-multi-carousel/lib/styles.css";
 import { iFilmItems } from "@/app/(pages)/home/home.types";
 import randomImage from "@/app/libs/randomImage";
 import Carousel from "react-multi-carousel";
+import Image from "next/image";
 
 interface iFilmItemsComponent {
     title: string;
@@ -42,7 +43,7 @@ const FilmItems = ({ title, dataFilm }: iFilmItemsComponent) => {
                 {dataFilm.map((data, index) => {
                     return (
                         <div className="carousel-films-item" key={index}>
-                            <img src={randomImage(index)} alt="movie" />
+                            <Image width={300} height={300} src={randomImage(index)} alt="Item Film" />
                             <div className="carousel-films-item--info">
                                 <h5>{data.title}</h5>
                                 {data.isExlusive && <div className="carousel-films-item--info--exclusive">Exclusive</div>}
