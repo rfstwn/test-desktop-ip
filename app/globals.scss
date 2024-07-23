@@ -10,6 +10,7 @@
 @import "./styles/components/navabar.module";
 @import "./styles/components/footer.module";
 @import "./styles/components/heroBanner.module";
+@import "./styles/components/filmItems.module";
 
 :root {
     color: $text_color;
@@ -46,52 +47,14 @@ body {
     }
 }
 
-.carousel-films-wrapper {
-    @include widthCustomContainer();
-    @apply overflow-hidden my-10;
-
-    h3 {
-        @apply text-xl text-white mb-4;
-    }
-
-    .carousel-films-item {
-        margin: 0 20px;
-        @apply relative;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            z-index: 1;
-            @apply w-full h-full bg-gradient-to-t from-primary from-15% to-transparent pb-12;
-        }
-
-        &--info {
-            position: absolute;
-            z-index: 2;
-            bottom: 0;
-            left: 0;
-            @apply flex justify-start items-end gap-2 text-sm sm:text-base w-full h-full p-3;
-
-            h5 {
-                @apply text-white line-clamp-1;
-            }
-
-            &--exclusive {
-                @apply text-slate-700 bg-secondary px-2 py-1 rounded-md;
-            }
-        }
-        img {
-            @apply aspect-video object-cover w-full rounded-none;
-        }
-    }
-}
-
 // Start Custom React-Multiple-Carousel
 // =============================================
 
 .react-multi-carousel-list {
     margin: 0 -20px !important;
+    @include onMobileDisplay() {
+        margin: 0 -10px !important;
+    }
 }
 .react-multiple-carousel__arrow {
     background-color: $third_color !important;
@@ -100,9 +63,18 @@ body {
     -moz-border-radius: 5px !important;
     -ms-border-radius: 5px !important;
     -o-border-radius: 5px !important;
+
+    @include onMobileDisplay() {
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
 }
 .react-multiple-carousel__arrow::before {
     color: #111111 !important;
+
+    @include onMobileDisplay() {
+        font-size: 10px !important;
+    }
 }
 .react-multiple-carousel__arrow--left {
     left: 1.5rem !important;

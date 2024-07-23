@@ -22,17 +22,21 @@ const Login = () => {
         let errorMessage = "";
 
         if (!username || !password) {
-            errorMessage = "Username and password cannot be empty";
+            errorMessage = "Username and password can't be empty";
         } else if (username !== "admin" || password !== "admin") {
             errorMessage = "Wrong username or password";
         }
 
         if (errorMessage) {
             toast.error(errorMessage, {
-                duration: 2000,
-                position: "top-center",
+                duration: 5000,
+                position: "bottom-center",
             });
         } else {
+            toast.success("Login success", {
+                duration: 5000,
+                position: "bottom-center",
+            });
             localStorage.setItem("session-login", "true");
             router.push("/");
         }
@@ -42,7 +46,10 @@ const Login = () => {
         <div className="login-wrapper">
             <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
                 <div className="form-content">
-                    <h1 className="text-3xl font-bold mb-4">Sign In</h1>
+                    <h1 className="text-3xl font-bold mb-1">Sign In</h1>
+                    <span className="block mb-4 text-sm italic text-slate-400 font-extralight">
+                        You can fill username as admin and password as admin
+                    </span>
                     <Input
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="Username"

@@ -22,7 +22,7 @@ const FilmItems = ({ title, dataFilm }: iFilmItemsComponent) => {
             slidesToSlide: 3,
         },
         mobile: {
-            breakpoint: { max: 767, min: 464 },
+            breakpoint: { max: 767, min: 0 },
             items: 2,
             slidesToSlide: 1,
         },
