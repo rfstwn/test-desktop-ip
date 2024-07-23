@@ -4,7 +4,7 @@
 
 **Company Name** : DesktopIP
 
-**Project Url** : [arif-desktop-ip.vercel.app](arif-desktop-ip.vercel.app)
+**Project Url** : [arif-desktop-ip.vercel.app](https://arif-desktop-ip.vercel.app/)
 
 **Credential for dummy login** : username (admin) and password (admin)
 
