@@ -1,11 +1,11 @@
 "use client";
 
-import randomImage from "@/app/libs/randomImage";
 import { Carousel, CustomFlowbiteTheme } from "flowbite-react";
 import Image from "next/image";
 import { FaPlay, FaShareNodes } from "react-icons/fa6";
 import Button from "../Elements/Button";
 import { iHeroBanner } from "@/app/(pages)/home/home.types";
+import useRandomImage from "@/app/hooks/useRandomImage";
 
 const customCarouselTheme: CustomFlowbiteTheme["carousel"] = {
     root: {
@@ -24,6 +24,7 @@ const customCarouselTheme: CustomFlowbiteTheme["carousel"] = {
     },
 };
 const HeroBanner = ({ dataFilms }: { dataFilms: Array<iHeroBanner> }) => {
+    const randomImage = useRandomImage();
     return (
         <div className="hero-banner">
             <Carousel theme={customCarouselTheme}>

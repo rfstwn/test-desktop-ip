@@ -1,8 +1,8 @@
 import "react-multi-carousel/lib/styles.css";
 import { iFilmItems } from "@/app/(pages)/home/home.types";
-import randomImage from "@/app/libs/randomImage";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
+import useRandomImage from "@/app/hooks/useRandomImage";
 
 interface iFilmItemsComponent {
     title: string;
@@ -10,6 +10,8 @@ interface iFilmItemsComponent {
 }
 
 const FilmItems = ({ title, dataFilm }: iFilmItemsComponent) => {
+    const randomImage = useRandomImage();
+
     const responsiveConfigCarousel = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },

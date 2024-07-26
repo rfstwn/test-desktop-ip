@@ -2,8 +2,9 @@
 
 import HeroBanner from "@/app/components/Home/HeroBanner";
 import { useEffect, useState } from "react";
-import { iFilmItems, iHeroBanner } from "./home.types";
+import { iFilmItems, iFilmResponse, iHeroBanner } from "./home.types";
 import FilmItems from "@/app/components/Home/FilmItems";
+import customFetch, { ApiResponse } from "@/app/lib/customFetch";
 
 export default function Home() {
     const [dataHeroBanner, setDataHeroBanner] = useState<Array<iHeroBanner>>([]);
@@ -11,10 +12,10 @@ export default function Home() {
     const [filmCatTwo, setFilmCatTwo] = useState<Array<iFilmItems>>([]);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URL_API}/films`)
-            .then((res) => res.json())
-            .then((data) => {
-                const { results: films, count: films_total } = data;
+        customFetch<{}, ApiResponse<iFilmResponse>>({ url: `${process.env.NEXT_PUBLIC_BASE_URL_API}/films`, apiName: "Get Films" }).then((res) => {
+            const { data } = res;
+            if (data) {
+                const { results: films, count: films_total } = data as unknown as iFilmResponse;
 
                 // Mapping Data Film
                 for (let count_film = 0; count_film < films_total; count_film++) {
@@ -41,7 +42,8 @@ export default function Home() {
                     setFilmCatTwo((old) => [...old, temp_film_cat_two]);
                     dataHeroBanner.length < 4 && setDataHeroBanner((old) => [...old, temp_film]);
                 }
-            });
+            }
+        });
     }, []);
 
     return (

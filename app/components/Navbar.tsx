@@ -7,13 +7,15 @@ import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa6";
 import { useContext, useEffect, useState } from "react";
 import { IdentityContext } from "../identity-provider";
+import { ApiResponse } from "../lib/customFetch";
+import toast from "react-hot-toast";
 
 interface iMenuItems {
     label: string;
     link: string;
     caret?: boolean;
 }
-const Navbar = () => {
+const Navbar = ({ errorFromServer }: { errorFromServer: Omit<ApiResponse<{}>, "data"> }) => {
     const pathName = usePathname();
     const router = useRouter();
     const channelName = useContext(IdentityContext);
@@ -35,6 +37,14 @@ const Navbar = () => {
         else if (pathName !== "/login" && !window.localStorage.getItem("session-login")) setButtonText("Sign In");
         else setButtonText("Sign Out");
     }, [pathName]);
+
+    useEffect(() => {
+        errorFromServer.isError &&
+            toast.error(((errorFromServer.responseCode as string) + " : " + errorFromServer.message) as string, {
+                duration: 5000,
+                position: "top-center",
+            });
+    }, [errorFromServer]);
 
     const [menuOpen, setMenuOpen] = useState(false);
     const listMenuItems: Array<iMenuItems> = [
