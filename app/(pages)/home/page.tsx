@@ -12,7 +12,11 @@ export default function Home() {
     const [filmCatTwo, setFilmCatTwo] = useState<Array<iFilmItems>>([]);
 
     useEffect(() => {
-        customFetch<{}, ApiResponse<iFilmResponse>>({ url: `${process.env.NEXT_PUBLIC_BASE_URL_API}/films`, apiName: "Get Films" }).then((res) => {
+        customFetch<{}, ApiResponse<iFilmResponse>>({
+            url: `${process.env.NEXT_PUBLIC_BASE_URL_API}/films`,
+            apiName: "Get Films",
+            cache: "no-store",
+        }).then((res) => {
             const { data } = res;
             if (data) {
                 const { results: films, count: films_total } = data as unknown as iFilmResponse;

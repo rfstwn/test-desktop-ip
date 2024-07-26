@@ -25,9 +25,7 @@ body {
     background-color: $primary_color;
 
     .container-pages {
-        width: 100vw;
-        min-height: 100vh;
-        height: auto;
+        @apply w-full min-h-full h-auto;
     }
 
     .bg-pages {
